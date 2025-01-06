@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL Winning Team Price</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #4CAF50;
+            border-radius: 4px;
+        }
+        .price-display {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+        .team-name {
+            font-size: 24px;
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>IPL Winning Team Price</h1>
+
+    <div class="container">
+        <label for="team">Select the IPL winning team:</label>
+        <select id="team">
+            <option value="">--Select Team--</option>
+            <option value="mumbai">Mumbai Indians</option>
+            <option value="chennai">Chennai Super Kings</option>
+            <option value="delhi">Delhi Capitals</option>
+            <option value="kolkata">Kolkata Knight Riders</option>
+            <option value="rcb">Royal Challengers Bangalore</option>
+            <option value="sunrisers">Sunrisers Hyderabad</option>
+            <option value="rajasthan">Rajasthan Royals</option>
+            <option value="gujarat">Gujarat Titans</option>
+            <option value="lucknow">Lucknow Super Giants</option>
+        </select>
+
+        <div class="price-display" id="priceDisplay">
+            <!-- The price will be displayed here -->
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to display the price based on the selected team
+        const teamPrices = {
+            "mumbai": "₹1000 Cr",
+            "chennai": "₹800 Cr",
+            "delhi": "₹750 Cr",
+            "kolkata": "₹650 Cr",
+            "rcb": "₹700 Cr",
+            "sunrisers": "₹500 Cr",
+            "rajasthan": "₹600 Cr",
+            "gujarat": "₹550 Cr",
+            "lucknow": "₹450 Cr"
+        };
+
+        const teamSelect = document.getElementById("team");
+        const priceDisplay = document.getElementById("priceDisplay");
+
+        // Event listener for the selection change
+        teamSelect.addEventListener("change", function() {
+            const selectedTeam = teamSelect.value;
+
+            if (selectedTeam) {
+                const teamName = teamSelect.options[teamSelect.selectedIndex].text;
+                const price = teamPrices[selectedTeam];
+                priceDisplay.innerHTML = `<span class="team-name">${teamName}</span> has an estimated price of <span>${price}</span>.`;
+            } else {
+                priceDisplay.innerHTML = '';
+            }
+        });
+    </script>
+
+</body>
+</html>
